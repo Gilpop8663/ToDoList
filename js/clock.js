@@ -1,6 +1,7 @@
 const today = document.querySelector("h2.today");
 const clock = document.querySelector("h2.clock");
 const stopWatchContainer = document.querySelector(".stopwatch-container");
+const startBtn = document.querySelector(".startWatch");
 
 const days = [
   "일요일",
@@ -25,6 +26,10 @@ function getTime() {
   clock.innerText = `${hour}:${minute}`;
 }
 
+let times = [];
+
+const TIMELABS_KEY = "timelabs";
+
 const stopWatch = document.querySelector(".stop-watch");
 
 let intervalId = 0,
@@ -33,14 +38,21 @@ let intervalId = 0,
   seconds = 0,
   stopWatchArr = stopWatch.innerText.split(":");
 
+function buttonDisable() {
+  startBtn.disabled = true;
+}
+
+function buttonable() {
+  startBtn.disabled = false;
+}
+
 function handleStartWatch() {
-  const startBtn = document.querySelector(".startWatch");
+  startBtn.addEventListener("click", buttonDisable);
   startBtn.addEventListener("click", () => {
     intervalId = setInterval(() => {
       console.log(stopWatch);
       if (!parseInt(stopWatch[2])) {
         seconds += 1;
-        console.log(seconds);
         if (seconds > 59) {
           seconds = 0;
           minutes += 1;
@@ -59,6 +71,7 @@ function handleStartWatch() {
 
 function handleStopWatch() {
   const stopBtn = stopWatchContainer.querySelector(".stopWatch");
+  stopBtn.addEventListener("click", buttonable);
   stopBtn.addEventListener("click", () => {
     clearInterval(intervalId);
   });
@@ -67,22 +80,73 @@ function handleStopWatch() {
   seconds = parseInt(stopWatchArr[2]);
 }
 
+function paintTodoList(todoValueObj) {
+  const li = document.createElement("li");
+  li.id = todoValueObj.id;
+  const span = document.createElement("span");
+  const button = document.createElement("button");
+  span.innerText = todoValueObj.text;
+  button.innerText = "❌";
+
+  button.addEventListener("click", deleteTodo);
+  li.appendChild(span);
+  li.appendChild(button);
+  todoList.appendChild(li);
+}
+
+function paintTimelabs(timelabsObj) {
+  const timeLab = document.querySelector(".time-lab ul");
+  const li = document.createElement("li");
+  const span = document.createElement("span");
+  const button = document.createElement("button");
+  button.classList.add("fas");
+  button.classList.add("fa-times-circle");
+  li.id = timelabsObj.id;
+  span.innerText = timelabsObj.text;
+
+  button.addEventListener("click", deleteTimes);
+
+  li.appendChild(span);
+  li.appendChild(button);
+  timeLab.appendChild(li);
+}
+
+function deleteTimes(event) {
+  const li = event.path[0].parentNode;
+  li.remove();
+  times = times.filter((times) => times.id !== parseInt(li.id));
+  savesTimelabs();
+}
+
 function handleResetWatch() {
   const resetBtn = stopWatchContainer.querySelector(".resetWatch");
+  resetBtn.addEventListener("click", buttonable);
   resetBtn.addEventListener("click", () => {
-    const timeLab = document.querySelector(".time-lab ul");
-    const li = document.createElement("li");
-    console.log(stopWatch.innerText);
-    li.innerText = stopWatch.innerText;
-    timeLab.appendChild(li);
-    localStorage.setItem();
+    const timelabsObj = {
+      text: stopWatch.innerText,
+      id: Date.now(),
+    };
+    paintTimelabs(timelabsObj);
+    times.push(timelabsObj);
+    savesTimelabs(timelabsObj);
     stopWatch.innerText = `00:00:00`;
-    console.log(stopWatch.innerText);
     clearInterval(intervalId);
     hours = 0;
     minutes = 0;
     seconds = 0;
   });
+}
+
+function savesTimelabs() {
+  localStorage.setItem(TIMELABS_KEY, JSON.stringify(times));
+}
+
+const loadTimelabs = localStorage.getItem(TIMELABS_KEY);
+
+if (localStorage.getItem(TIMELABS_KEY) !== null) {
+  const parseTodo = JSON.parse(loadTimelabs);
+  times = parseTodo;
+  parseTodo.forEach(paintTimelabs);
 }
 
 function init() {

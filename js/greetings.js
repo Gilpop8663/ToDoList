@@ -10,8 +10,10 @@ const CLASS_HIDDEN = "hidden";
 const USERNAME_KEY = "username";
 
 function paintGreetings(username) {
-  greeting.innerText = `Hello ${username}`;
+  greeting.innerText = `${username}`;
+  greeting.classList.add("animation");
   greeting.classList.remove(CLASS_HIDDEN);
+  greeting.classList.remove("animation");
 }
 
 function handleLoginSubmit(event) {

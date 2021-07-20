@@ -21,8 +21,9 @@ function paintTodoList(todoValueObj) {
   li.id = todoValueObj.id;
   const span = document.createElement("span");
   const button = document.createElement("button");
+  button.classList.add("fas");
+  button.classList.add("fa-times-circle");
   span.innerText = todoValueObj.text;
-  button.innerText = "❌";
 
   button.addEventListener("click", deleteTodo);
   li.appendChild(span);

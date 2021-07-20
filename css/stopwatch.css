@@ -1,0 +1,54 @@
+.stopwatch-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.stop-watch {
+  font-size: 30px;
+  margin-top: 50px;
+}
+
+.time-lab {
+  font-size: 30px;
+  margin-top: 30px;
+}
+
+.time-lab ul li {
+  margin-bottom: 20px;
+}
+
+.watchBtn button {
+  width: 60px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 800;
+  border: none;
+  border-radius: 20px;
+  box-shadow: inset 0 0 0 0 black;
+}
+
+.watchBtn button:hover {
+  box-shadow: inset 0 0 0 100vmax black;
+  color: #fff;
+}
+
+.startWatch:hover {
+  box-shadow: inset 0 0 0 100vmax black;
+  color: #fff;
+}
+
+.time-lab ul li span {
+  margin-right: 15px;
+}
+.time-lab ul li button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  color: white;
+}

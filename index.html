@@ -10,10 +10,23 @@
 
     <title>Document</title>
 
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/5951a7bf3c.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body>
+    <div class="gray-screen">22</div>
+    <div class="white-top__bar">
+      <div>
+        <span>Today's</span>
+        <span>To Do</span>
+      </div>
+      <h1 class="greeting hidden"></h1>
+      <div></div>
+    </div>
     <form class="login-form hidden">
       <input
         type="text"
@@ -27,29 +40,55 @@
 
       <button>로그인</button>
     </form>
-    <h2 class="today"></h2>
-    <h2 class="clock">00:00</h2>
-    <div class="stopwatch-container">
-      <h2 class="stop-watch">00:00:00</h2>
-      <button class="startWatch">시작</button>
-      <button class="stopWatch">멈춤</button>
-      <button class="resetWatch">리셋</button>
-    </div>
-    <div class="time-lab">
-      <ul></ul>
-    </div>
-    <h1 class="greeting hidden"></h1>
-    <form class="todo-form">
-      <input type="text" required, placeholder="오늘의 할 일을 적어주세요" />
-    </form>
-    <ul class="todo-list"></ul>
-    <div class="qoute">
-      <span></span>
-      <span></span>
-    </div>
-    <div class="weather">
-      <span></span>
-      <span></span>
+    <div class="content">
+      <div class="left-content">
+        <form class="todo-form">
+          <input
+            type="text"
+            ,
+            required
+            ,
+            placeholder="오늘의 할 일을 적어주세요"
+          />
+        </form>
+        <ul class="todo-list"></ul>
+      </div>
+      <div class="right-content">
+        <div class="right-top-content">
+          <div class="right-top-left-content">
+            <div class="stopwatch-container">
+              <h2 class="stop-watch">00:00:00</h2>
+              <div class="watchBtn">
+                <button class="startWatch">시작</button>
+                <button class="stopWatch">멈춤</button>
+                <button class="resetWatch">리셋</button>
+              </div>
+            </div>
+            <div class="time-lab">
+              <ul></ul>
+            </div>
+          </div>
+          <div class="right-top-right-content">
+            <h2 class="today"></h2>
+            <h2 class="clock">00:00</h2>
+          </div>
+        </div>
+        <div class="right-bottom-content">
+          <div class="right-bottom-left-content">
+            <div class="weather">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="right-bottom-right-content">
+            <span class="today-qoute">오늘의 구절</span>
+            <div class="qoute">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 

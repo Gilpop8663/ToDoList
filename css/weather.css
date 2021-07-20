@@ -1,0 +1,15 @@
+.weather {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.weather span:first-child {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.weather span:last-child {
+  font-size: 30px;
+}
