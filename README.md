@@ -1,8 +1,8 @@
 ## TODO LIST 버전 2
 
-## TODO LIST 버전 2 링크 : " "
+## TODO LIST 버전 2 링크 : "https://gilpop8663.github.io/ToDoList/"
 
-## TODO LIST 버전 1 링크 : " "
+## TODO LIST 버전 1 링크 : "https://gilpop8663.github.io/First-screen-2021/"
 
 ---
 
